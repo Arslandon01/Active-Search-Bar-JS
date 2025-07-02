@@ -1,0 +1,280 @@
+/* =======================
+   GLOBAL STYLES
+========================== */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  body {
+    background-image: url(bgimg-body.jpg);
+    background-size: contain;
+    background-repeat: repeat;
+  }
+  
+  .main {
+    width: 98%;
+    margin: auto;
+  }
+  
+  /* =======================
+     HEADER SECTION
+  ========================== */
+  header {
+    width: 100%;
+    height: 120px;
+    margin-top: 1%;
+  }
+  
+  .nav {
+    display: grid;
+    grid-template-columns: 1fr 4.5fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 10px;
+    align-items: center;
+  }
+  
+  .logo {
+    grid-area: 1 / 1 / 2 / 2;
+  }
+  
+  .menu ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 30px;
+  }
+  
+  .menu li {
+    text-decoration: none;
+    list-style: none;
+    display: inline-block;
+    font-size: 15px;
+    font-family: 'Segoe UI';
+    font-weight: 600;
+    color: aliceblue;
+  }
+  
+  .menu {
+    grid-area: 1 / 2 / 2 / 3;
+    display: flex;
+  }
+  
+  /* =======================
+     SEARCH BAR SECTION
+  ========================== */
+  .search {
+    grid-area: 1 / 3 / 2 / 5;
+    position: relative;
+    width: 200px; /* Adjust width as needed */
+  }
+  
+  .searchbar {
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 3px;
+    padding-right: 40px;
+    padding-left:7px; /* Space for the icon */
+    font-size: 14px;
+    outline: none;
+    box-shadow: inherit gray 10px 2px 0px 10px;
+    font-family: 'Segoe UI';
+    font-weight: 600;
+  }
+  
+  .searchbar::placeholder {
+    font-family: 'Segoe UI';
+    font-weight: 700;
+    color: gray;
+  }
+  
+  .search-icon {
+    position: absolute;
+    right: 5px; /* Adjust icon position */
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgb(128, 128, 128);
+    font-size: 16px;
+    padding: 10px 3px;
+    transition: .1s linear;
+  }
+  
+  .search-icon:hover {
+    background-color: rgb(221, 218, 218);
+    color: rgb(2, 2, 2); /* Change icon color on hover */
+    cursor: pointer;
+  }
+  
+  /* =======================
+     CONTENT SECTION
+  ========================== */
+  .content {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    background-color: #FFFF;
+    height: 2780px;
+    width: 100%;
+  }
+  
+  /* =======================
+     PRODUCT SECTION
+  ========================== */
+  .product-parent {
+    grid-area: 1 / 1 / 2 / 2;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+ 
+  }
+  
+  .product-content {
+    width: 100%;
+    margin: 20px auto;
+    height: 100%;
+    padding: 15px 20px;
+    
+  }
+  
+  .head {
+    width: 100%;
+    height: fit-content;
+    position: relative;
+    margin-bottom: 18px;
+  }
+  
+  .title {
+  width: fit-content;
+  height: fit-content;
+  /* Ensure left alignment and add a consistent left margin */
+  text-align: left;
+ 
+}
+
+.title h2 {
+  background-color: #333333;
+  color: #fff;
+  padding: 5px 12px;
+  font-family: 'Quantico';
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0; /* Reset default margins so that the left margin on .title takes effect */
+}
+  
+  .title h2::before {
+    position: absolute;
+    content: "";
+    width: 95%;
+    height: 2px;
+    bottom: 0px;
+    background-color: #333333;
+  }
+  
+  /* =======================
+     SIDEBAR SECTION
+  ========================== */
+  .sidebar {
+    grid-area: 1 / 2 / 2 / 3;
+    /* padding: 42px; */
+  }
+  .sidebar-content {
+    width: 90%;
+    height: 800px;
+    margin: 20px auto;
+    padding: 15px 20px;
+  }
+  /* =======================
+     POST SECTION
+  ========================== */
+  .product-post-container {
+    grid-area: 1 / 1;
+    /* border: solid 2px red; */
+    width: 95%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-column-gap: 30px;
+    grid-row-gap: 0px;
+    font-family: 'Segoe UI';
+
+    margin-bottom: 30px;
+  }
+  
+  .product-post-cover {
+    grid-area: 1 / 1 / 2 / 2;
+    height: 250px;
+    /* border: 2px solid yellow; */
+    align-items: center;
+  }
+  
+  .product-post-cover img {
+    height: 100%;
+  }
+  
+  .product-post-data {
+    grid-area: 1 / 2 / 2 / 3;
+    /* border: 2px solid pink; */
+  }
+  
+  .meta-data {
+    margin: 10px 0px;
+    display: flex;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+    color: gray;
+    font-size: .9rem;
+    gap: 10px;
+  }
+  
+  /* Icon before Date */
+  .date::before {
+    content: "\f017";
+    font-family: "Font Awesome 6 Free";
+    font-size: .8em;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+  
+  /* Icon before Author */
+  .author::before {
+    content: "\f007";
+    font-family: "Font Awesome 6 Free";
+    font-size: .8em;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+  
+  .product-description {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-top: 15px;
+    color: rgb(65, 65, 65);
+  }
+  
+  .product-post-data h3 {
+    font-family: 'Quantico';
+    font-weight: 700;
+    font-size: x-large;
+  }
+  .sidebar-list{
+    margin-bottom: 10px;
+    color: #3b5998;
+    font-family:'Open Sans';
+    font-weight: 700;
+    font-size: .9rem;
+    line-height: 3;
+  }
+  .sidebar-list::before{
+    content: "\f0c2";
+    font-family: "Font Awesome 6 Free";
+    font-size: .8em;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+  
+  

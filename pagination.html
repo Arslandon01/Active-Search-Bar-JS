@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Anime Pagination</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f3f3f3;
+    }
+    h2 {
+      text-align: center;
+    }
+    .post-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .post {
+      background-color: white;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: bold;
+    }
+    .pagination {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .pagination button {
+      padding: 8px 12px;
+      margin: 0 3px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .pagination button.active {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🔥 Anime Posts</h2>
+
+  <div class="post-container" id="postContainer"></div>
+  <div class="pagination" id="pagination"></div>
+
+  <script>
+    const posts = [];
+    for (let i = 1; i <= 100; i++) {
+      posts.push(`Anime Episode ${i}`);
+    }
+
+    const postsPerPage = 10;
+    const totalPages = Math.ceil(posts.length / postsPerPage);
+    let currentPage = 1;
+
+    function displayPosts(page) {
+      const start = (page - 1) * postsPerPage;
+      const end = start + postsPerPage;
+      const paginatedPosts = posts.slice(start, end);
+
+      const container = document.getElementById("postContainer");
+      container.innerHTML = paginatedPosts.map(post => `<div class="post">${post}</div>`).join('');
+    }
+
+    function setupPagination() {
+      const pagination = document.getElementById("pagination");
+      pagination.innerHTML = "";
+
+      const prevBtn = document.createElement("button");
+      prevBtn.textContent = "Prev";
+      prevBtn.disabled = currentPage === 1;
+      prevBtn.onclick = () => {
+        if (currentPage > 1) {
+          currentPage--;
+          displayPosts(currentPage);
+          setupPagination();
+        }
+      };
+      pagination.appendChild(prevBtn);
+
+      let startPage = Math.max(1, currentPage - 1);
+      let endPage = Math.min(totalPages, currentPage + 1);
+
+      if (currentPage <= 2) {
+        startPage = 1;
+        endPage = 3;
+      } else if (currentPage >= totalPages - 1) {
+        startPage = totalPages - 2;
+        endPage = totalPages;
+      }
+
+      for (let i = startPage; i <= endPage; i++) {
+        const btn = document.createElement("button");
+        btn.textContent = i;
+        btn.classList.toggle("active", currentPage === i);
+        btn.onclick = () => {
+          currentPage = i;
+          displayPosts(currentPage);
+          setupPagination();
+        };
+        pagination.appendChild(btn);
+      }
+
+      const nextBtn = document.createElement("button");
+      nextBtn.textContent = "Next";
+      nextBtn.disabled = currentPage === totalPages;
+      nextBtn.onclick = () => {
+        if (currentPage < totalPages) {
+          currentPage++;
+          displayPosts(currentPage);
+          setupPagination();
+        }
+      };
+      pagination.appendChild(nextBtn);
+    }
+
+    displayPosts(currentPage);
+    setupPagination();
+  </script>
+
+</body>
+</html>
